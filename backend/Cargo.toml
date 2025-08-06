@@ -1,0 +1,14 @@
+[package]
+name = "noten_management"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.4"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "net"] }
+axum-server = { version = "0.7", features = ["tls-rustls-no-provider"] }
+
+[dependencies.rustls]
+version = "0.23"
+features = ["logging", "std", "ring", "tls12"]
+default-features = false
