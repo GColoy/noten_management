@@ -1,9 +1,5 @@
 mod server;
-
-use axum::{
-    routing::get,
-    Router,
-};
+mod app;
 
 use server::*;
 
@@ -16,10 +12,17 @@ const MODE: Mode = if cfg!(debug_assertions) {
                     } else {
                         Mode::Https
                     };
+const STATIC_DIR: &str = "../frontend/dist";
 
 #[tokio::main]
 async fn main() {
-    let app: Router = Router::new().route("/", get(|| async { "Hello, World!" }));
+    if cfg!(debug_assertions) {
+        tracing_subscriber::fmt()
+            .with_max_level(tracing::Level::DEBUG)
+            .init();
+    } 
+
+    let app = app::create_app(STATIC_DIR);
 
     let server = Server::new(
         ADDRESS,

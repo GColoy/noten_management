@@ -35,7 +35,13 @@ impl Server {
     }
 
     pub async fn serve(self, app: Router) {
-        println!("Starting server at {} in {:?} mode", self.address.to_string(), self.mode);
+        let http = if self.mode == Mode::Http {
+            "http://"
+        } else {
+            "https://"
+        };
+        println!("Starting server at {}{} in {:?} mode", http, self.address.to_string(), self.mode);
+        
         match self.mode {
             Mode::Http => self.serve_unsecure(app).await,
             Mode::Https => self.serve_secure(app).await,
