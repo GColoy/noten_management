@@ -1,6 +1,8 @@
 mod server;
 mod app;
 
+use std::path::Path;
+
 use server::*;
 
 const ADDRESS: Address = Address {
@@ -22,7 +24,8 @@ async fn main() {
             .init();
     } 
 
-    let app = app::create_app(STATIC_DIR);
+    let path = Path::new(STATIC_DIR);
+    let app = app::create_app(path);
 
     let server = Server::new(
         ADDRESS,
