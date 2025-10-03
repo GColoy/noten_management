@@ -7,11 +7,6 @@ const router = createRouter({
       path: '/',
       name: 'dashboard',
       component: () => import('@/views/index.vue')
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard-alt',
-      component: () => import('@/components/Dashboard.vue')
     }
   ]
 })
