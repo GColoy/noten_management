@@ -12,26 +12,6 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard-alt',
       component: () => import('@/components/Dashboard.vue')
-    },
-    {
-      path: '/team',
-      name: 'team',
-      component: () => import('@/views/Team.vue')
-    },
-    {
-      path: '/projects',
-      name: 'projects',
-      component: () => import('@/views/Projects.vue')
-    },
-    {
-      path: '/calendar',
-      name: 'calendar',
-      component: () => import('@/views/Calendar.vue')
-    },
-    {
-      path: '/reports',
-      name: 'reports',
-      component: () => import('@/views/Reports.vue')
     }
   ]
 })
