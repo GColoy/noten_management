@@ -1,3 +1,6 @@
 /backend/target
 backend/.vscode/launch.json
 *.code-workspace
+*.lockb
+*.editorconfig
+*.browserslistrc
