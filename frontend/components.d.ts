@@ -8,8 +8,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AccessReuestDashboard: typeof import('./src/components/AccessReuestDashboard.vue')['default']
     Dashboard: typeof import('./src/components/Dashboard.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    InboxDashboard: typeof import('./src/components/InboxDashboard.vue')['default']
+    QuickSelect: typeof import('./src/components/QuickSelect.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Searchbar: typeof import('./src/components/Searchbar.vue')['default']

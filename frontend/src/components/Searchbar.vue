@@ -2,16 +2,24 @@
   <div class="mb-4">
     <div class="d-flex align-center justify-center ga-4">
       <v-text-field
+        v-model="searchQuery"
         label="Search"
         prepend-inner-icon="mdi-magnify"
         hide-details
 				variant="outlined"
+        @keyup.enter="performSearch"
       />
       <v-btn
         :icon="showFilters ? 'mdi-filter' : 'mdi-filter-outline'"
         variant="elevated"
         @click="toggleFilters"
       />
+      <v-btn
+        icon="mdi-magnify"
+        variant="elevated"
+        @click="performSearch"
+      />
+      <!-- unimplemented -->
     </div>
     
     <v-expand-transition class="ps-0">
@@ -62,9 +70,29 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: ''
+  },
+  disableNavigation: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const router = useRouter()
 
 const showFilters = ref(false)
+
+// Use computed property for two-way binding with parent
+const searchQuery = computed({
+  get: () => props.modelValue,
+  set: (value) => emit('update:modelValue', value)
+})
 const selectedSubject = ref(null)
 const selectedGrade = ref(null)
 const selectedSemester = ref(null)
@@ -80,8 +108,24 @@ const toggleFilters = () => {
   showFilters.value = !showFilters.value
 }
 
-// Optional: Emit events für die Parent-Komponente
-const emit = defineEmits(['filter-changed'])
+const performSearch = () => {
+  const query = searchQuery.value.trim()
+  if (query) {
+    // Emit search event for parent to handle
+    emit('search', query)
+    
+    // If navigation is not disabled, navigate to search page
+    if (!props.disableNavigation) {
+      router.push({
+        name: 'search',
+        query: { query }
+      })
+    }
+  }
+}
+
+// Emit events for parent component
+const emit = defineEmits(['update:modelValue', 'search', 'filter-changed'])
 
 // Watchers für Filter-Änderungen
 import { watch } from 'vue'
