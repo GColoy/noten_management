@@ -6,8 +6,10 @@
 						<v-list-item-title>{{ request.Stück }}</v-list-item-title>
 						<v-list-item-subtitle>{{ request.User }}</v-list-item-subtitle>
 						<template v-slot:prepend>
-							<v-icon v-if="request.Done" color="green">mdi-check-circle</v-icon>
-							<v-icon v-else color="red">mdi-alert-circle</v-icon>
+							<!-- TODO icons ändern -->
+							<v-icon v-if="request.Done == AccessRequestStatus.done" color="green">mdi-check-circle</v-icon>
+							<v-icon v-else-if="request.Done == AccessRequestStatus.rejected" color="red">mdi-check-circle</v-icon>
+							<v-icon v-else color="yellow">mdi-check-circle</v-icon>
 						</template>
 	        </v-list-item>
 	      </v-list>
@@ -15,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { getAccessRequests } from '@/services/apiAccess'
+import { getAccessRequests, AccessRequestStatus } from '@/services/apiAccess'
 
 let accessRequests = getAccessRequests()
 

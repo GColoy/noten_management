@@ -15,17 +15,11 @@
     </div>
     <div class="d-flex justify-start mt-auto">
       <v-btn to="/inbox" variant="elevated">Öffnen</v-btn>
-      <v-btn
-        variant="elevated"
-        @click="inboxCount == 0 ? (inboxCount = 42) : (inboxCount = 0)"
-        >Change Number</v-btn
-      >
     </div>
   </v-sheet>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { getInboxCount } from "@/services/apiAccess";
 
 let inboxCount = getInboxCount();
