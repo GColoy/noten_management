@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { getInboxCount } from "@/services/apiAccess";
 
-let inboxCount = ref(23); // unimplemented
+let inboxCount = getInboxCount();
 </script>
