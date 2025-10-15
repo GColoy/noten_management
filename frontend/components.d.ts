@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AccessReuestDashboard: typeof import('./src/components/AccessReuestDashboard.vue')['default']
     Dashboard: typeof import('./src/components/Dashboard.vue')['default']
+    DefaultPage: typeof import('./src/components/DefaultPage.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     InboxDashboard: typeof import('./src/components/InboxDashboard.vue')['default']
     QuickSelect: typeof import('./src/components/QuickSelect.vue')['default']

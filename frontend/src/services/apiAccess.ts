@@ -1,3 +1,5 @@
+import { GeneratedIdentifierFlags } from "typescript";
+
 export interface QuickAccessPiece {
   title: string;
   id: String;
@@ -33,4 +35,13 @@ export function getAccessRequests(): AccessRequest[] {
 
 export function getInboxCount() {
   return 23; 
+}
+
+export interface Score {
+  id: String,
+  Name: String,
+}
+
+export function getScoreInfos(id: String): Score {
+
 }

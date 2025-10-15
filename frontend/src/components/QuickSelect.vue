@@ -1,6 +1,6 @@
 <template>
 	<v-sheet rounded class="pa-3 d-flex align-center justify-center flex-wrap ga-4" >
-		<div @click="router.push({ path: '/Stück/' + piece.id })" class="text-center rounded cursor-pointer" style="width: 150px; height: 200px; background: yellowgreen;" v-for="piece in pieces" :key="piece.id">
+		<div @click="router.push({ path: '/score/' + piece.id })" class="text-center rounded cursor-pointer" style="width: 150px; height: 200px; background: yellowgreen;" v-for="piece in pieces" :key="piece.id">
 			{{ piece.title }}
 		</div>
 	</v-sheet>
